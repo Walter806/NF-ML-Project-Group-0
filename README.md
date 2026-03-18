@@ -1,172 +1,119 @@
 [![Shipping files](https://github.com/neuefische/ds-ml-project-template/actions/workflows/workflow-02.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/neuefische/ds-ml-project-template/actions/workflows/workflow-02.yml)
 
-# Template Repo for ML Project
+# Financial Inclusion in Africa — Group 0
 
-This template repo will give you a good starting point for your second project. Besides the files used for creating a virtual environment, you will find a simple example of how to build a simple model in a python script. This is maybe the simplest way to do it. We train a simple model in the jupyter notebook, where we select only some features and do minimal cleaning. The output is then stored in simple python scripts.
-
-The data used for this is: [coffee quality dataset](https://github.com/jldbc/coffee-quality-database).
+**Team:** Andreas, Paulina, Rehma, Ernesto
 
 ---
 
-## Set up a Kanban board on github
+## Project Overview
 
-Go to ML-Project Template.
+**Goal:** Build a machine learning model to predict which individuals in Kenya, Rwanda, Tanzania, and Uganda are most likely to have a bank account.
 
-1. Click on "Use this Template" (Blue button)
-![alt text](./images/step_1a_new.png)
+**Why it matters:** Bank account ownership is a key measure of financial inclusion, which is vital for economic growth. The model helps identify factors influencing access to formal financial services.
 
-1. Create new repository with relevant name, the owner should be your own account. 
-![alt text](./images/step_2_new.png)
+**Data source:** [Zindi — Financial Inclusion in Africa](https://zindi.africa/competitions/financial-inclusion-in-africa)
 
-1. In your newly create repo, navigate to "Projects", and then click on "Link a project" (blue button). Normally you don't have created a project yet, so you can click the arrow navigation to create project on your profile. This project can be added at the end to your repository.
-![alt text](./images/add_project_new.png)
+---
 
+## Objectives & KPIs
 
-4.  You will be guided to your profiles projects and it will be shown a create project window. Choose "board" view and **not** "table" view.
- ![alt text](./images/choose_board.png)
-5. Now change the name of your board, to match that of your chosen ML project. Then click "Create project" blue button. Great you create Kanban Board
-![alt text](./images/create_project_new.png)
+**Objective:** Build a model that predicts whether an individual has a bank account to support financial inclusion strategies.
 
-6. Next, assign rights to all your team members by clicking on the 3 dots on the top right of the board, and then go to "Settings".
-![alt text](./images/kanban_settings.png)
+**Target variable (binary):**
+- `1` = has a bank account
+- `0` = does not have a bank account
 
+**KPI:** F1-score on the test set (evaluated via Zindi leaderboard using Mean Absolute Error)
 
-7. Next, click on "Manage Access". Add your team mates by Searching for their github handle in the search window.Change their Role from ‘Write’ to ‘Admin’. Click on the blue button “Invite” to add them. Repeat for all team members.
-![alt text](./images/team_access_new.png
-)
+---
 
-8. Next,go back to the kanban board and at the bottom  add action items with the relevant name e.g. “load data”, "get statistics", etc.
-![alt text](./images/load_data_item.png
-)
+## Research Questions
 
+- Which individuals are most likely to have or use a bank account?
+- What is the state of financial inclusion in Kenya, Rwanda, Tanzania, and Uganda?
+- Which key factors drive individuals' financial security?
 
-9. Convert added item to issue by clicking on the 3 dots on the particular added item.
-![alt text](./images/convert_to_issue.png
-)
+---
 
-10. Then select the repo you created  for the issue to be added. (Select the project repo example “my-project-name”)
-![alt text](./images/select_repo.png
-)
+## Dataset
 
-11. When in project repo, Go to issues, then go to milestones. 
-![alt text](./images/to_milestones.png
-)
+**Features used:**
 
-12. Click on ”New milestone”.
+| Category | Features |
+|---|---|
+| Demographics | Gender, age, relationship with head of household, marital status |
+| Location | Country, location type (urban/rural), household size |
+| Socioeconomic | Education level, job type, cellphone access |
 
-13. Give the milestone a due date and description as per the example provided by the coaches. Add description of: 
+---
 
-    A) What needs to be completed to be done with the milestone
+## Workflow
 
-    B) The definition of done: what will your result look like when you have completed the milestone? (check the provided format)
-![alt text](./images/new_milestone.png)
+1. **Data exploration** — summary statistics, distributions, correlations, missing values
+2. **Data cleaning** — handle missing values, encode categorical variables, check for duplicates
+3. **Modeling** — train classifiers (e.g. logistic regression, random forest, XGBoost)
+4. **Evaluation** — F1-score on test set, MAE for Zindi submission
+5. **Submission** — generate prediction file and submit to Zindi leaderboard
 
-14. Now navigate to "issues".
+### Key questions to answer during EDA
 
-15. Assign issues to milestones 
-![alt text](./images/milestone_to_issue_new.png)
+| Goal | Method |
+|---|---|
+| Which features might be useful | Checking correlations |
+| Summary statistics | `df.describe()`, value counts |
+| Which cleaning steps are necessary | Visualizing distributions |
+| Which models might be appropriate | Exploring class balance, feature types |
+| Whether data quality issues exist | Identifying missing values, duplicates, inconsistencies |
 
-16. Give it assignees (people who will work on the task). 
-![alt text](./images/milestone_to_someone.png)
-
-### Optional: Add workflows
-
-Workflows can help you keep your kanban board automatically on track. 
-
-Select the project created in the steps above.  
-
-Click on the 3 dots to the far right of the board (...)
-
-Select workflow as the first option. 
-
-Activate the ones you feel necessary to your project
-
-Go back to your project repository (fraud detection))
+---
 
 ## Set up your Environment
 
-
-
-### **`macOS`** type the following commands : 
-
-- For installing the virtual environment you can either use the [Makefile](Makefile) and run `make setup` or install it manually with the following commands:
-
-     ```BASH
-    make setup
-    ```
-    After that active your environment by following commands:
-    ```BASH
-    source .venv/bin/activate
-    ```
-Or ....
-- Install the virtual environment and the required packages by following commands:
-
-    ```BASH
-    pyenv local 3.11.3
-    python -m venv .venv
-    source .venv/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
-    
-### **`WindowsOS`** type the following commands :
-
-- Install the virtual environment and the required packages by following commands.
-
-   For `PowerShell` CLI :
-
-    ```PowerShell
-    pyenv local 3.11.3
-    python -m venv .venv
-    .venv\Scripts\Activate.ps1
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
-
-    For `Git-bash` CLI :
-  
-    ```BASH
-    pyenv local 3.11.3
-    python -m venv .venv
-    source .venv/Scripts/activate
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
-
-    **`Note:`**
-    If you encounter an error when trying to run `pip install --upgrade pip`, try using the following command:
-    ```Bash
-    python.exe -m pip install --upgrade pip
-    ```
-
-
-   
-## Usage
-
-In order to train the model and store test data in the data folder and the model in models run:
-
-**`Note`**: Make sure your environment is activated.
+### macOS
 
 ```bash
-python example_files/train.py  
+pyenv local 3.11.3
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-In order to test that predict works on a test set you created run:
+Or use the Makefile:
 
 ```bash
-python example_files/predict.py models/linear_regression_model.sav data/X_test.csv data/y_test.csv
+make setup
+source .venv/bin/activate
 ```
 
-## Limitations
+### Windows (PowerShell)
 
-Development libraries are part of the production environment, normally these would be separate as the production code should be as slim as possible.
+```PowerShell
+pyenv local 3.11.3
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
 
+### Windows (Git Bash)
+
+```bash
+pyenv local 3.11.3
+python -m venv .venv
+source .venv/Scripts/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+> **Note:** If `pip install --upgrade pip` fails on Windows, try `python.exe -m pip install --upgrade pip`
 
 ---
 
 ## Handling Merge Conflicts in Jupyter Notebooks
 
-When working in teams, `.ipynb` files can cause messy merge conflicts because they’re JSON-based.  
+When working in teams, `.ipynb` files can cause messy merge conflicts because they're JSON-based.
 We use **nbdime** to make this easy.
 
 ### Setup (run once)
@@ -180,9 +127,22 @@ nbdime mergetool
 ```
 
 A web interface will open showing both notebook versions side by side.
-Choose what to keep, save and close tool, then:
+Choose what to keep, save and close the tool, then:
 ```bash
 git add your_notebook.ipynb
 git commit -m "Resolved notebook conflict"
 ```
-That’s it — clean merges for notebooks!
+
+---
+
+## Repository Structure
+
+```
+NF-ML-Project-Group-0/
+├── data/               # Raw and processed datasets (not committed)
+├── notebooks/          # Jupyter notebooks for EDA and modeling
+├── models/             # Saved model files
+├── example_files/      # Example training and prediction scripts
+├── requirements.txt
+└── README.md
+```
