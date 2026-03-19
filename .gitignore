@@ -215,3 +215,25 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# macOS
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code
+.vscode/
+
+# Project-specific — generated files
+features_encoded.csv
+*.csv.gz
+
+# Saved models
+models/*.pkl
+models/*.pickle
+models/*.joblib
+models/*.h5
+models/*.pt
+models/*.onnx
+
