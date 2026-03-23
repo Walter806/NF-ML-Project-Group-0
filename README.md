@@ -262,5 +262,5 @@ git commit -m "Resolved notebook conflict"
 |------|-----------|
 | Ernesto | EDA, XGBoost + Optuna, Presentation |
 | Andreas | EDA, Decision trees, LightGBM, encoding, Presentation |
-| Paulina | Random Forest, model tuning, Presentation |
+| Paulina | EDA, Random Forest, model tuning, Presentation |
 | Rehma | EDA, data exploration, Presentation |
